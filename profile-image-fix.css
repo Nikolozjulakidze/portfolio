@@ -1,0 +1,851 @@
+/* Profile photo styles - Add this to fix image sizing */
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Update profile-img to support photos */
+.profile-img {
+    position: relative !important;
+    overflow: visible !important;
+    width: 280px !important;
+    height: 280px !important;
+}
+
+/* Hide fallback icon when photo is present */
+.profile-img:has(.profile-photo) .fallback-icon {
+    display: none;
+}
+
+/* Fallback for browsers that don't support :has() */
+.profile-img .profile-photo ~ .fallback-icon {
+    display: none;
+}
+
+/* Fallback icon styling */
+.fallback-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 5rem;
+    color: #78dbff;
+    opacity: 0.5;
+}
+
+/* Profile card container for orbiting icons */
+.profile-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Floating icons container - positioned around profile image */
+.floating-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Individual floating icons */
+.floating-icons i {
+    position: absolute;
+    font-size: 2rem;
+    background: rgba(120, 219, 255, 0.1);
+    padding: 15px;
+    border-radius: 50%;
+    border: 2px solid rgba(120, 219, 255, 0.3);
+    backdrop-filter: blur(10px);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Position and animate each icon */
+.floating-icons i:nth-child(1) {
+    color: #61dafb; /* React blue */
+    animation: orbit1 12s linear infinite;
+}
+
+.floating-icons i:nth-child(2) {
+    color: #dd0031; /* Angular red */
+    animation: orbit2 12s linear infinite;
+}
+
+.floating-icons i:nth-child(3) {
+    color: #306998; /* Python blue */
+    animation: orbit3 12s linear infinite;
+}
+
+.floating-icons i:nth-child(4) {
+    color: #f29111; /* Database orange */
+    animation: orbit4 12s linear infinite;
+}
+
+/* Orbit animations - each icon starts at different position */
+@keyframes orbit1 {
+    0% {
+        transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(180px) rotate(-360deg);
+    }
+}
+
+@keyframes orbit2 {
+    0% {
+        transform: rotate(90deg) translateX(180px) rotate(-90deg);
+    }
+    100% {
+        transform: rotate(450deg) translateX(180px) rotate(-450deg);
+    }
+}
+
+@keyframes orbit3 {
+    0% {
+        transform: rotate(180deg) translateX(180px) rotate(-180deg);
+    }
+    100% {
+        transform: rotate(540deg) translateX(180px) rotate(-540deg);
+    }
+}
+
+@keyframes orbit4 {
+    0% {
+        transform: rotate(270deg) translateX(180px) rotate(-270deg);
+    }
+    100% {
+        transform: rotate(630deg) translateX(180px) rotate(-630deg);
+    }
+}
+
+/* Hover effects */
+.floating-icons i:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 25px rgba(120, 219, 255, 0.6);
+    background: rgba(120, 219, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .floating-icons {
+        width: 300px;
+        height: 300px;
+    }
+    
+    @keyframes orbit1, @keyframes orbit2, @keyframes orbit3, @keyframes orbit4 {
+        0% {
+            transform: rotate(0deg) translateX(130px) rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg) translateX(130px) rotate(-360deg);
+        }
+    }
+    
+    .floating-icons i {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+}
+n 
+/* ========================================
+   BEAUTIFUL NJ LOGO STYLING
+   ======================================== */
+
+.nav-logo {
+    position: relative;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.nav-logo span {
+    display: inline-block !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 2px !important;
+    background: linear-gradient(135deg, #78dbff 0%, #ff77c6 50%, #78dbff 100%) !important;
+    background-size: 200% 200% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    animation: gradientShift 4s ease-in-out infinite, logoGlow 3s ease-in-out infinite alternate !important;
+    padding: 12px 20px !important;
+    border-radius: 16px !important;
+    position: relative !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-shadow: 0 0 30px rgba(120, 219, 255, 0.5) !important;
+}
+
+.nav-logo span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(120, 219, 255, 0.15), rgba(255, 119, 198, 0.15));
+    border-radius: 14px;
+    z-index: -1;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 4px 20px rgba(120, 219, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(120, 219, 255, 0.4);
+    transition: all 0.4s ease;
+}
+
+.nav-logo span::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(135deg, #78dbff, #ff77c6, #78dbff);
+    background-size: 200% 200%;
+    border-radius: 20px;
+    z-index: -2;
+    opacity: 0;
+    transition: all 0.4s ease;
+    filter: blur(12px);
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.nav-logo:hover span {
+    transform: scale(1.08) translateY(-2px);
+    text-shadow: 0 0 40px rgba(120, 219, 255, 0.8);
+}
+
+.nav-logo:hover span::before {
+    box-shadow: 
+        0 8px 30px rgba(120, 219, 255, 0.5),
+        0 4px 15px rgba(255, 119, 198, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(120, 219, 255, 0.25), rgba(255, 119, 198, 0.25));
+    border: 1px solid rgba(120, 219, 255, 0.6);
+}
+
+.nav-logo:hover span::after {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* Active/Click Effect */
+.nav-logo:active span {
+    transform: scale(1.02) translateY(0px);
+}
+
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Glow Pulse Animation */
+@keyframes logoGlow {
+    0% {
+        filter: drop-shadow(0 0 8px rgba(120, 219, 255, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(120, 219, 255, 0.7)) drop-shadow(0 0 30px rgba(255, 119, 198, 0.3));
+    }
+    100% {
+        filter: drop-shadow(0 0 8px rgba(120, 219, 255, 0.4));
+    }
+}
+
+/* Mobile Responsive for Logo */
+@media (max-width: 768px) {
+    .nav-logo span {
+        font-size: 1.8rem !important;
+        padding: 10px 16px !important;
+        letter-spacing: 1px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo span {
+        font-size: 1.5rem !important;
+        padding: 8px 14px !important;
+    }
+}
+
+/* ========================================
+   FIX FOR SECTION TITLES VISIBILITY
+   ======================================== */
+
+.section-title {
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.section-title i {
+    margin-right: 1rem !important;
+}
+
+/* ========================================
+   HERO TITLE ONE LINE FIX
+   ======================================== */
+
+.hero-text h1 {
+    white-space: nowrap !important;
+    overflow: visible !important;
+}
+
+/* For very small screens, allow controlled breaking only if absolutely necessary */
+@media (max-width: 320px) {
+    .hero-text h1 {
+        white-space: normal !important;
+        line-height: 1.1 !important;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR SMALLER DEVICES
+   ======================================== */
+
+/* Tablets and small laptops */
+@media (max-width: 1000px) {
+    .hero-container {
+        padding: 0 2rem !important;
+    }
+    
+    .hero-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 3rem !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .section-title {
+        font-size: 2.5rem !important;
+        margin-bottom: 3rem !important;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+    
+    .education-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+}
+
+/* Large mobile devices */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem !important;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-text p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    .section-title {
+        font-size: 2rem !important;
+        margin-bottom: 2.5rem !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    
+    .section-title i {
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .education-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .about-content {
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+    
+    .about-stats {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+    }
+    
+    .hero-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 200px !important;
+        text-align: center !important;
+    }
+    
+    .social-links {
+        justify-content: center !important;
+        gap: 1.5rem !important;
+    }
+    
+    .nav-menu {
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: rgba(15, 15, 35, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
+        padding: 1rem 0 !important;
+        transform: translateY(-100%) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .hamburger {
+        display: flex !important;
+    }
+}
+
+/* Medium mobile devices */
+@media (max-width: 600px) {
+    .hero-text h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .section-title i {
+        font-size: 1.5rem !important;
+    }
+    
+    .project-card {
+        padding: 1.5rem !important;
+    }
+    
+    .project-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .skill-category h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .skill-tags {
+        gap: 0.5rem !important;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem !important;
+        padding: 0.3rem 0.8rem !important;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem !important;
+    }
+    
+    .timeline-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .achievement-card {
+        padding: 1.5rem !important;
+    }
+    
+    .achievement-card h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .education-item {
+        padding: 1.5rem !important;
+    }
+    
+    .education-item h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .about-stats {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center !important;
+    }
+    
+    .contact-details {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem !important;
+    }
+    
+    section {
+        padding: 60px 0 !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-text h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    .hero-text p {
+        font-size: 0.9rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .section-title i {
+        font-size: 1.3rem !important;
+    }
+    
+    .project-card {
+        padding: 1rem !important;
+    }
+    
+    .project-header h3 {
+        font-size: 1rem !important;
+    }
+    
+    .project-card p {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .tech-tag {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.6rem !important;
+    }
+    
+    .skill-category {
+        padding: 1rem !important;
+    }
+    
+    .skill-category h3 {
+        font-size: 1rem !important;
+    }
+    
+    .timeline-content {
+        padding: 1rem !important;
+    }
+    
+    .timeline-header h3 {
+        font-size: 1rem !important;
+    }
+    
+    .timeline-achievements li {
+        font-size: 0.85rem !important;
+    }
+    
+    .achievement-card {
+        padding: 1rem !important;
+    }
+    
+    .achievement-card h3 {
+        font-size: 1rem !important;
+    }
+    
+    .achievement-card p {
+        font-size: 0.85rem !important;
+    }
+    
+    .education-item {
+        padding: 1rem !important;
+    }
+    
+    .education-item h3 {
+        font-size: 1rem !important;
+    }
+    
+    .education-item p {
+        font-size: 0.85rem !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 180px !important;
+        padding: 0.8rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .floating-icons {
+        width: 250px !important;
+        height: 250px !important;
+    }
+    
+    .profile-img {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 400px) {
+    .hero-text h1 {
+        font-size: 1.4rem !important;
+    }
+    
+    .hero-text h2 {
+        font-size: 1rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .section-title i {
+        font-size: 1.1rem !important;
+    }
+    
+    .project-card {
+        padding: 0.8rem !important;
+    }
+    
+    .skill-category {
+        padding: 0.8rem !important;
+    }
+    
+    .timeline-content {
+        padding: 0.8rem !important;
+    }
+    
+    .achievement-card {
+        padding: 0.8rem !important;
+    }
+    
+    .education-item {
+        padding: 0.8rem !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 160px !important;
+        padding: 0.7rem 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .floating-icons {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .profile-img {
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 350px) {
+    .container {
+        padding: 0 0.5rem !important;
+    }
+    
+    section {
+        padding: 40px 0 !important;
+    }
+    
+    .hero-text h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    .hero-text h2 {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-text p {
+        font-size: 0.8rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .section-title i {
+        font-size: 1rem !important;
+    }
+    
+    .project-card {
+        padding: 0.6rem !important;
+    }
+    
+    .project-header h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    .project-card p {
+        font-size: 0.75rem !important;
+    }
+    
+    .tech-tag {
+        font-size: 0.6rem !important;
+        padding: 0.15rem 0.4rem !important;
+    }
+    
+    .skill-category {
+        padding: 0.6rem !important;
+    }
+    
+    .skill-category h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    .skill-tag {
+        font-size: 0.65rem !important;
+        padding: 0.2rem 0.5rem !important;
+    }
+    
+    .timeline-content {
+        padding: 0.6rem !important;
+    }
+    
+    .timeline-header h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    .achievement-card {
+        padding: 0.6rem !important;
+    }
+    
+    .achievement-card h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    .education-item {
+        padding: 0.6rem !important;
+    }
+    
+    .education-item h3 {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-buttons .btn {
+        width: 140px !important;
+        padding: 0.6rem 0.7rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .floating-icons {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    .floating-icons i {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 1rem !important;
+        padding: 5px !important;
+    }
+    
+    .profile-img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .social-links a {
+        font-size: 1.2rem !important;
+        padding: 0.6rem !important;
+    }
+    
+    .nav-logo span {
+        font-size: 1.2rem !important;
+        padding: 6px 10px !important;
+    }
+}
